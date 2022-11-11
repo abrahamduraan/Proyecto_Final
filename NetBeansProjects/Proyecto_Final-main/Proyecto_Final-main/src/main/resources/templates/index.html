@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Stockshoes</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="contenido">
+        
+            <div th:if="${articulos == null or articulos.empty}">
+                <h3>No hay sneackers en stock</h3>
+            </div>
+        </div>
+        <footer th:replace="layout/plantilla :: footer">
+
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Stockshoes</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="contenido">
+            <h2 class="h2"> Datos de Cliente</h2>
+            <br>
+            <a th:href="@{/cliente/listado}" class="h2,mod2">Regresar</a>  
+            <hr>
+                <br>
+                <form th:action="@{/cliente/guardar}"
+                      method="post"
+                      th:object="${cliente}">
+                    <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
+                    <fieldset> 
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre"
+                               required=true
+                               placeholder="Nombre"
+                               size="15"
+                               th:field="*{nombre}"/>
+                    </fieldset> 
+
+                    <fieldset> 
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" name="apellidos" 
+                               required=true
+                               placeholder="Apellidos"
+                               size="25"
+                               th:field="*{apellidos}"/>
+                    </fieldset> 
+
+                    <fieldset> 
+                        <label for="correo">Correo:</label>
+                        <input type="email" name="correo"
+                               required=true
+                               placeholder="correo@xxxxx.com"
+                               size="25"
+                               th:field="*{correo}"/>
+                    </fieldset> 
+
+                    <fieldset> 
+                        <label for="telefono">Telefono:</label>
+                        <input 
+                            type="tel" name="telefono" 
+                            placeholder="8888-8888"
+                            required=true
+                            size="9"
+                            th:field="*{telefono}"/>
+                    </fieldset> 
+
+                    <hr/>
+                    <input type="submit" name="guardar" value="guardar"/>
+                </form>
+
+                <footer th:replace="layout/plantilla :: footer">
+                    </div>
+
+                    </body>
+                    </html>
