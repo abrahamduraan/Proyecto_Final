@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="contenido">
+            <h2> Datos de Articulo</h2>
+            <a th:href="@{/articulo/listado}">Regresar</a>  
+            <hr>
+                <form th:action="@{/articulo/guardar}"
+                      method="post"
+                      th:object="${articulo}">
+                    <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
+                    <fieldset> 
+                        <label for="idCategoria">Id Categoria:</label>
+                        <input type="number" name="idCategoria"
+                               required=true
+                               placeholder="xxxx"
+                               size="15"
+                               th:field="*{idCategoria}"/>
+                    </fieldset> 
+
+                    <fieldset> 
+                        <label for="descripcion">Descripcion:</label>
+                        <input type="text" name="descripcion" 
+                               required=true
+                               placeholder="Descripcion"
+                               size="25"
+                               th:field="*{descripcion}"/>
+                    </fieldset> 
+
+                    <fieldset> 
+                        <label for="detalle">Detalle</label>
+                        <input type="text" name="detalle"
+                               required=true
+                               placeholder="Detalle"
+                               size="20"
+                               th:field="*{detalle}"/>
+                    </fieldset> 
+
+                    <fieldset> 
+                        <label for="precio">Precio:</label>
+                        <input 
+                            type="number" name="precio" 
+                            placeholder="xxxx"
+                            required=true
+                            size="9"
+                            th:field="*{precio}"/>
+                    </fieldset> 
+
+                    <fieldset> 
+                        <label for="existencias">Existencias:</label>
+                        <input type="number"
+                               required=true
+                               name="existencias" th:field="*{existencias}"/>
+                    </fieldset> 
+
+                    <fieldset> 
+                        <label for="activo">Activo:</label>
+                        <input type="checkbox"
+                               name="activo" th:field="*{activo}"/>
+                    </fieldset> 
+
+                    <hr/>
+                    <input type="submit" name="guardar" value="guardar"/>
+                </form>
+
+                <footer th:replace="layout/plantilla :: footer">
+                    </div>
+
+                    </body>
+                    </html>
