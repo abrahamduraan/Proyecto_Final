@@ -9,7 +9,7 @@ body {
 }
 
 .header {
-    background-color: darkolivegreen;
+    background-color: #F8F8F8;
     height: 90px;
     position: fixed;
     top:0;
@@ -24,31 +24,31 @@ body {
 }
 
 .nav-link {
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
 .logo {
-    font-size: 32px;
-    font-weight: lighter;
-    padding: 0 20px;
-    line-height: 70px;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0 40px;
+    line-height: 90px;
 }
 
 .nav-menu {
     display: flex;
-    margin-right: 50px;
+    margin-right: 40px;
     list-style: none;
 }
 
 .nav-menu-item {
-    font-size: 25px;
-    margin: 0 50px;
+    font-size: 18px;
+    margin: 0 10px;
     line-height: 90px;
 }
 
 .nav-menu-link:hover {
-    background-color: aquamarine;
+    background-color: #d66b6a;
     transition: 1s;
 }
 
@@ -57,16 +57,8 @@ body {
     border-radius: 8px;
 }
 
-.contenedor-imagenes {
-    display: flex;
-}
-
-.contenedor-imagenes img:first-child {
-    margin-right: 10px;
-}
-
-.footer {
-    background-color: darkolivegreen;
+.footer{
+    background-color: black;
     text-align: center;
     color: white;
     height: 20px;
@@ -77,11 +69,13 @@ body {
 }
 
 .contenido {
-    background-color: wheat;
+    background-color: #FFF;
     position: fixed;
     top: 90px;
     bottom: 20px;
     left: 0;
     width: 100%;
-    overflow: auto;
+    overflow: auto;    
+    
 }
+
