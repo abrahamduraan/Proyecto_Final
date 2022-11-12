@@ -5,51 +5,54 @@
     <head>
         <title>Stockshoes</title>
         <meta charset="UTF-8"/>
-            <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
         <div class="contenido">
-            <h2 class="h2"> Datos de Articulos</h2>
+            <h4 class="text-muted display-6">Productos del Inventario</h4>
             <br>
-            <a th:href="@{/articulo/nuevo}" class="h2">Nuevo Articulo</a>  
-            <br>
-            <div th:if="${articulos != null and !articulos.empty}"> 
-                <table border="1">
-                     <br>
-                    <thead>
-                        <tr>
-                            <th>Id Articulo</th>
-                            <th>Id Categoria</th>
-                            <th>Descripcion</th>
-                            <th>Detalle</th>
-                            <th>Precio</th>
-                            <th>Existencias</th>
-                            <th>Activo</th>
-                            <th>Eliminar</th>
-                            <th>Modificar</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="articulo : ${articulos}">
-                            <td>[[${articulo.idArticulo}]]</td>
-                            <td>[[${articulo.idCategoria}]]</td>
-                            <td>[[${articulo.descripcion}]]</td>
-                            <td>[[${articulo.detalle}]]</td>
-                            <td style="text-align: right">[[${#numbers.formatDecimal(articulo.precio,3,2)}]]</td>
-                            <td>[[${articulo.existencias}]]</td>
-                            <td>[[${articulo.activo}]]</td>
-                            <td><a th:href="@{/articulo/elimina/} + ${articulo.idArticulo}" class="mod">Elimina</a></td>
-                            <td><a th:href="@{/articulo/actualiza/} + ${articulo.idArticulo}" class="mod2">Actualiza</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                <div class="h5">
+                    <a th:href="@{/articulo/nuevo}" class="link-secondary">Agregar producto al Stock</a>  
+                </div>
+                <div th:if="${articulos != null and !articulos.empty}"> 
+                    <table border="1" class="table table table-bordered">
+                        <br>
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th>Id Articulo</th>
+                                    <th>Id Categoria</th>
+                                    <th>Descripcion</th>
+                                    <th>Detalle</th>
+                                    <th>Precio</th>
+                                    <th>Existencias</th>
+                                    <th>Activo</th>
+                                    <th>Eliminar</th>
+                                    <th>Modificar</th>
 
-            <div th:if="${articulos == null or articulos.empty}">
-                <h3> No tenemos articulos que mostrar</h3>
-            </div>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="articulo : ${articulos}">
+                                    <td>[[${articulo.idArticulo}]]</td>
+                                    <td>[[${articulo.idCategoria}]]</td>
+                                    <td>[[${articulo.descripcion}]]</td>
+                                    <td>[[${articulo.detalle}]]</td>
+                                    <td style="text-align: right">[[${#numbers.formatDecimal(articulo.precio,3,2)}]]</td>
+                                    <td>[[${articulo.existencias}]]</td>
+                                    <td>[[${articulo.activo}]]</td>
+                                    <td><a th:href="@{/articulo/elimina/} + ${articulo.idArticulo}" class="mod">Elimina</a></td>
+                                    <td><a th:href="@{/articulo/actualiza/} + ${articulo.idArticulo}" class="mod2">Actualiza</a></td>
+                                </tr>
+                            </tbody>
+                    </table>
+                </div>
+
+                <div th:if="${articulos == null or articulos.empty}">
+                    <h3> No tenemos articulos que mostrar</h3>
+                </div>
         </div>
         <footer th:replace="layout/plantilla :: footer">
 

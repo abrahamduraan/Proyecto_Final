@@ -8,18 +8,26 @@
     </head>
     <body>
         <header th:fragment="header" class="header">
-            <nav class="nav">
-                <a class="logo nav-link " th:href="@{/}">Administrador</a>
-                <ul class="nav-menu">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid h1 display-4" >
+                    <a class="navbar-brand" th:href="@{/}">Administrador</a>
+                </div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div class="container-fluid h4">
+                        <li class="nav-menu-item">
+                            <a class="navbar-brand" th:href="@{/cliente/listado}">Clientes Registrados</a>
+                        </li>
+                    </div>
+                    <div class="container-fluid h4">
+                        <li class="nav-menu-item">
+                            <a class="navbar-brand" th:href="@{/categoria/listado}">Categorias de Sneackers</a>
+                        </li>
+                    </div>
+                     <div class="container-fluid h4">
                     <li class="nav-menu-item">
-                        <a class="nav-menu-link nav-link" th:href="@{/cliente/listado}">Clientes Registrados</a>
+                        <a class="navbar-brand" th:href="@{/articulo/listado}">Sneackers</a>
                     </li>
-                    <li class="nav-menu-item">
-                        <a class="nav-menu-link nav-link" th:href="@{/categoria/listado}">Categorias de Sneackers</a>
-                    </li>
-                    <li class="nav-menu-item">
-                        <a class="nav-menu-link nav-link" th:href="@{/articulo/listado}">Sneackers</a>
-                    </li>
+                          </div>
                 </ul>
             </nav>            
         </header>

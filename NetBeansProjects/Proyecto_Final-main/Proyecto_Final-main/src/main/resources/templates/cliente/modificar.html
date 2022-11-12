@@ -6,62 +6,68 @@
         <title>Stockshoes</title>
         <meta charset="UTF-8"/>
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
         <div class="contenido">
             <h2 class="h2"> Datos de Cliente</h2>
             <br>
-            <a th:href="@{/cliente/listado}" class="h2,mod2">Regresar</a>  
-            <hr>
-                <br>
-                <form th:action="@{/cliente/guardar}"
-                      method="post"
-                      th:object="${cliente}">
-                    <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
-                    <fieldset> 
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" name="nombre"
-                               required=true
-                               placeholder="Nombre"
-                               size="15"
-                               th:field="*{nombre}"/>
-                    </fieldset> 
+                <a th:href="@{/cliente/listado}" class="h4 link-success">Regresar</a>  
+                <hr>
+                    <br>
+                        <form th:action="@{/cliente/guardar}"
+                              method="post"
+                              th:object="${cliente}">
+                            <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
+                            <fieldset> 
+                                <label for="nombre" class="form-label">Nombre:</label>
+                                <input type="text" name="nombre"
+                                       required=true
+                                       placeholder="Nombre"
+                                       size="15"
+                                       th:field="*{nombre}"
+                                       class="form-control"/>
+                            </fieldset> 
+                            <br>
+                                <fieldset> 
+                                    <label for="apellidos" class="form-label">Apellidos:</label>
+                                    <input type="text" name="apellidos" 
+                                           required=true
+                                           placeholder="Apellidos"
+                                           size="25"
+                                           th:field="*{apellidos}"
+                                           class="form-control"/>
+                                </fieldset> 
+<br>
+                                <fieldset> 
+                                    <label for="correo" class="form-label">Correo:</label>
+                                    <input type="email" name="correo"
+                                           required=true
+                                           placeholder="correo@xxxxx.com"
+                                           size="25"
+                                           th:field="*{correo}"
+                                           class="form-control"/>
+                                </fieldset> 
+<br>
+                                <fieldset> 
+                                    <label for="telefono" class="form-label">Telefono:</label>
+                                    <input 
+                                        type="tel" name="telefono" 
+                                        placeholder="8888-8888"
+                                        required=true
+                                        size="9"
+                                        th:field="*{telefono}"
+                                        class="form-control"/>
+                                </fieldset> 
 
-                    <fieldset> 
-                        <label for="apellidos">Apellidos:</label>
-                        <input type="text" name="apellidos" 
-                               required=true
-                               placeholder="Apellidos"
-                               size="25"
-                               th:field="*{apellidos}"/>
-                    </fieldset> 
+                                <hr/>
+                                <input type="submit" name="guardar" value="guardar" class="btn btn-success"/>
+                        </form>
 
-                    <fieldset> 
-                        <label for="correo">Correo:</label>
-                        <input type="email" name="correo"
-                               required=true
-                               placeholder="correo@xxxxx.com"
-                               size="25"
-                               th:field="*{correo}"/>
-                    </fieldset> 
+                        <footer th:replace="layout/plantilla :: footer">
+                            </div>
 
-                    <fieldset> 
-                        <label for="telefono">Telefono:</label>
-                        <input 
-                            type="tel" name="telefono" 
-                            placeholder="8888-8888"
-                            required=true
-                            size="9"
-                            th:field="*{telefono}"/>
-                    </fieldset> 
-
-                    <hr/>
-                    <input type="submit" name="guardar" value="guardar"/>
-                </form>
-
-                <footer th:replace="layout/plantilla :: footer">
-                    </div>
-
-                    </body>
-                    </html>
+                            </body>
+                            </html>

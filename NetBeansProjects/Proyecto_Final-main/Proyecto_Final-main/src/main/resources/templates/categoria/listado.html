@@ -5,41 +5,44 @@
     <head>
         <title>Stockshoes</title>
         <meta charset="UTF-8"/>
-            <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
         <div class="contenido">
-            <h2 class="h2"> Datos de Categorias</h2>
+            <h4 class="text-muted display-6">Categorias Disponibles</h4>
             <br>
-            <a th:href="@{/categoria/nuevo}" class="h2">Nueva Categoria</a>  
-            <br>
-            <div th:if="${categorias != null and !categorias.empty}"> 
-                <table border="1">
-                     <br>
-                    <thead>
-                        <tr>
-                            <th>Id Categoria</th>
-                            <th>Descripcion</th>
-                            <th>Eliminar</th>
-                            <th>Modificar</th>
+                <div class="h5">
+                    <a th:href="@{/categoria/nuevo}" class="link-secondary">Agregar una categoría de Sneackers</a>  
+                </div>
+                <div th:if="${categorias != null and !categorias.empty}"> 
+                    <table border="1" class="table table table-bordered" >
+                        <br>
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th>Id Categoria</th>
+                                    <th>Descripcion</th>
+                                    <th>Eliminar</th>
+                                    <th>Modificar</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="categoria : ${categorias}">
-                            <td>[[${categoria.idCategoria}]]</td>
-                            <td>[[${categoria.descripcion}]]</td>
-                            <td><a th:href="@{/categoria/elimina/} + ${categoria.idCategoria}" class="mod">Elimina</a></td>
-                            <td><a th:href="@{/categoria/actualiza/} + ${categoria.idCategoria}" class="mod2">Actualiza</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="categoria : ${categorias}">
+                                    <td>[[${categoria.idCategoria}]]</td>
+                                    <td>[[${categoria.descripcion}]]</td>
+                                    <td><a th:href="@{/categoria/elimina/} + ${categoria.idCategoria}" class="mod">Elimina</a></td>
+                                    <td><a th:href="@{/categoria/actualiza/} + ${categoria.idCategoria}" class="mod2">Actualiza</a></td>
+                                </tr>
+                            </tbody>
+                    </table>
+                </div>
 
-            <div th:if="${categorias == null or categorias.empty}">
-                <h3> No tenemos categorias que mostrar</h3>
-            </div>
+                <div th:if="${categorias == null or categorias.empty}">
+                    <h3> No tenemos categorias que mostrar</h3>
+                </div>
         </div>
         <footer th:replace="layout/plantilla :: footer">
 

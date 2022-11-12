@@ -6,76 +6,83 @@
         <title>Stockshoes</title>
         <meta charset="UTF-8"/>
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
         <div class="contenido">
             <h2 class="h2"> Datos de Articulo</h2>
-             <br>
-            <a th:href="@{/articulo/listado}" class="h2,mod2">Regresar</a>  
-            <hr>
-                 <br>
-                <form th:action="@{/articulo/guardar}"
-                      method="post"
-                      th:object="${articulo}">
-                    <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
-                    
-                    <fieldset> 
-                        <label for="idCategoria">Id Categoria:</label>
-                        <input type="number" name="idCategoria"
-                               required=true
-                               placeholder="xxxx"
-                               size="15"
-                               th:field="*{idCategoria}"/>
-                    </fieldset> 
+            <br>
+                <a th:href="@{/articulo/listado}" class="h4 link-success">Regresar</a>  
+                <hr>
+                    <br>
+                        <form th:action="@{/articulo/guardar}"
+                              method="post"
+                              th:object="${articulo}">
+                            <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
 
-                    <fieldset> 
-                        <label for="descripcion">Descripcion:</label>
-                        <input type="text" name="descripcion" 
-                               required=true
-                               placeholder="Descripcion"
-                               size="25"
-                               th:field="*{descripcion}"/>
-                    </fieldset> 
+                            <fieldset> 
+                                <label for="idCategoria" class="form-label">Id Categoria:</label>
+                                <input type="number" name="idCategoria"
+                                       required=true
+                                       placeholder="xxxx"
+                                       size="15"
+                                       th:field="*{idCategoria}"
+                                       class="form-control"/>
+                            </fieldset> 
+                            <br>
+                                <fieldset> 
+                                    <label for="descripcion" class="form-label">Descripcion:</label>
+                                    <input type="text" name="descripcion" 
+                                           required=true
+                                           placeholder="Descripcion"
+                                           size="25"
+                                           th:field="*{descripcion}"
+                                           class="form-control"/>
+                                </fieldset> 
+                                <br>
+                                    <fieldset> 
+                                        <label for="detalle" class="form-label">Detalle</label>
+                                        <input type="text" name="detalle"
+                                               required=true
+                                               placeholder="Detalle"
+                                               size="20"
+                                               th:field="*{detalle}"
+                                               class="form-control"/>
+                                    </fieldset> 
+                                    <br>
+                                        <fieldset> 
+                                            <label for="precio" class="form-label">Precio:</label>
+                                            <input 
+                                                type="number" name="precio" 
+                                                placeholder="xxxx"
+                                                required=true
+                                                size="9"
+                                                th:field="*{precio}"
+                                                class="form-control"/>
+                                        </fieldset> 
+                                        <br>
+                                            <fieldset> 
+                                                <label for="existencias" class="form-label">Existencias:</label>
+                                                <input type="number"
+                                                       required=true
+                                                       name="existencias" th:field="*{existencias}"
+                                                       class="form-control"/>
+                                            </fieldset> 
+                                            <br>
+                                                <fieldset> 
+                                                    <label for="activo" class="form-label">Activo:</label>
+                                                    <input type="checkbox"
+                                                           name="activo" th:field="*{activo}"/>
+                                                </fieldset> 
 
-                    <fieldset> 
-                        <label for="detalle">Detalle</label>
-                        <input type="text" name="detalle"
-                               required=true
-                               placeholder="Detalle"
-                               size="20"
-                               th:field="*{detalle}"/>
-                    </fieldset> 
+                                                <hr/>
+                                                <input type="submit" name="guardar" value="guardar" class="btn btn-success"/>
+                                                </form>
 
-                    <fieldset> 
-                        <label for="precio">Precio:</label>
-                        <input 
-                            type="number" name="precio" 
-                            placeholder="xxxx"
-                            required=true
-                            size="9"
-                            th:field="*{precio}"/>
-                    </fieldset> 
+                                                <footer th:replace="layout/plantilla :: footer">
+                                                    </div>
 
-                    <fieldset> 
-                        <label for="existencias">Existencias:</label>
-                        <input type="number"
-                               required=true
-                               name="existencias" th:field="*{existencias}"/>
-                    </fieldset> 
-
-                    <fieldset> 
-                        <label for="activo">Activo:</label>
-                        <input type="checkbox"
-                               name="activo" th:field="*{activo}"/>
-                    </fieldset> 
-
-                    <hr/>
-                    <input type="submit" name="guardar" value="guardar"/>
-                </form>
-
-                <footer th:replace="layout/plantilla :: footer">
-                    </div>
-
-                    </body>
-                    </html>
+                                                    </body>
+                                                    </html>
