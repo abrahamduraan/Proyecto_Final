@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>StockShoes</title>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <section id="main-header" class="py-0 text-white" th:replace="common/tenis::mainHeader"></section>
+        <div class="container listadoProductos">
+                        <h2 th:text="#{index.titulo}" class="text-muted py-4"></h2>            
+                        <div class="row" th:if="${articulos != null and !articulos.empty}">
+                            <div class="col col-3 mb-4" th:each="articulo : ${articulos}" th:if= "${articulo.idCategoria == 2}">
+                                <div class="product-card border px-2 py-2">
+                                    <img th:src="@{${'/img/' + articulo.idArticulo + '.jpg'}}" class="card-img-top" alt="equipo">
+                                        <div class="card-body">
+                                            <h5 class="card-title">[[${articulo.descripcion}]]</h5>
+                                            <h6 class="card-text">[[${articulo.detalle}]]</h6>   
+                                            <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(articulo.precio)}]]</h6>
+                                            <button class="agregarCarrito btn-dark btn" th:replace="common/addToCartButton::addToCartButton"></button>                       
+                                        </div>
+                                </div>
+                            </div>                
+                        </div>
+                        <div th:if="${articulos == null or articulos.empty}"  th:text="#{articulo.no_mostrar}">
+                            No tenemos lista de articulos que mostrar...
+                        </div>
+                    </div>
+                    <footer th:replace="layout/plantilla :: footer"/>
+                    </body>
+                    </html>

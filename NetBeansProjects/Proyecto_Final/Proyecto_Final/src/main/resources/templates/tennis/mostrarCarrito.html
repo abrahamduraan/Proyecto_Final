@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head"></head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <section id="main-header" class="py-0 text-white" th:replace="common/tenis::mainHeader"></section>
+        <div class="container listadoCarrito altoCompleto">
+            <h2 th:text="#{index.titulo}" class="text-muted py-4"></h2>            
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Carrito de Compras</h4>
+                            </div>
+                            <div>
+                                <table class="table table-stryped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Modelo</th>
+                                            <th>Version</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaCarrito"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <button class="btn btn-dark" id="compraRealizada">Comprar</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+        <script type="text/javascript" th:src="@{/js/showCart.js}"></script>
+    </body>
+</html>

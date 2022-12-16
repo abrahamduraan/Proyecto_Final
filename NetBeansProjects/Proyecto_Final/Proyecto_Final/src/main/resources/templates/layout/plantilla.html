@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> 
+    <head th:fragment="head">
+        <title>StockShoes</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <script type="text/javascript" th:src="@{/js/cart.js}"></script>
+    </head>
+    <body class="pb-5">
+        <header th:fragment="header" class="header" id="header">
+            <nav class="navbar navbar-expand-sm navbar-light py-3">
+                <div class="container-fluid">
+                    <a th:href="@{/}" class="brand navbar-brand">StockShoes</a>
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="d-flex collapse navbar-collapse justify-content-end" id="navbarHeader" >
+                        <ul class="navbar-nav header-submenu" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link" th:href="@{/cliente/listado}"
+                                   th:text="#{plantilla.clientes}">Clientes</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link" th:href="@{/categoria/listado}"
+                                   th:text="#{plantilla.categorias}">Categorias</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link" th:href="@{/articulo/listado}"
+                                   th:text="#{plantilla.articulos}">Articulos</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto justify-content-right" id="cart" th:if="${#httpServletRequest.requestURI != '/login'}">
+                            <li class="nav-item">
+                                <a th:href="@{/tennis/mostrarCarrito}">
+                                    <i class="fa-solid fa-cart-shopping "></i>
+                                    <span class="cartItems"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
+                            <li class="nav-item mr-3 usuario">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-user"></i>
+                                    <span th:text="#{plantilla.bienvenido}">Bievenido:</span>
+                                    <span sec:authentication="name">Usuario</span>
+                                </a>
+                            </li>
+                            <li class="nav-item pr-2">
+                                <form method="POST" th:action="@{/logout}">
+                                    <a href="#" onclick="this.parentNode.submit();" class="logout nav-link btn btn-light border border-secondary mr-2">
+                                        <i class="<--fas fa-user-times--/>"></i> [[#{plantilla.logout}]]
+                                    </a>
+                                </form>
+                            </li>
+                        </ul>
+                        <ul sec:authorize="!isAuthenticated()" class="navbar-nav ml-auto justify-content-right" th:if="${#httpServletRequest.requestURI != '/login'}">
+                            <li class="nav-item">
+                                <form method="POST" th:action="@{/login}">
+                                    <a href="#" onclick="this.parentNode.submit();" class="login nav-link btn btn-light border border-secondary">
+                                        <i class="<<--fas fa-door-open--/>"></i> [[#{login.login}]]
+                                    </a>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>                    
+                </div>
+            </nav>
+        </header>
+        <footer th:fragment="footer" class="footer bottom-0 start-0 end-0 mt-5 p-0">
+            <div class="container">
+                <div class="col d-flex justify-content-between">
+                    <p class="idiomas lead text-center mb-0">
+                        <a th:href="@{/(lang=es)}"><span>ES</span></a> | 
+                        <a th:href="@{/(lang=en)}"><span>EN</span></a>
+                    </p>
+                    <p class="derechos lead mb-0 py-2">&COPY [[#{plantilla.derechos}]]</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

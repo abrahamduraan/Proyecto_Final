@@ -1,0 +1,151 @@
+#main-header {
+    background: #F4F3F1;
+    margin-top: 75px;
+}
+
+#main-header a {
+    color: black;
+    font-weight: bold;
+}
+
+.footer {
+    background: #101010;
+    color: white;
+}
+
+.derechos {
+    font-style: italic;
+    font-size: .75em;
+}
+
+.idiomas a {
+    text-decoration: none;
+    color: white;
+    font-size: .75em;
+}
+
+.idiomas a:hover {
+    text-decoration: underline;
+}
+
+.product-card {
+    position: relative;
+}
+
+.agregarCarrito {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    padding: 0;
+    border-radius: 50%;
+    height: 21px;
+    width: 21px;
+    transition: all 50ms ease;
+}
+
+.agregarCarrito:hover {
+    background: #3CB371;
+    border-color: #3CB371;
+}
+
+.agregarCarrito .texto {
+    display: none;
+    transition: width 50ms ease;
+    border-radius: 4px;
+    font-size: .75em;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.agregarCarrito:hover .texto {
+    display: inline-block;
+    position: absolute;
+    top: -28px;
+    left: -2px;
+    color: white;
+    text-shadow: 1px 1px rgba(0,0,0,.25);
+    background: #3CB371;
+    width: 133px;
+    font-weight: bold;
+}
+
+.col-3 .plus-sign {
+    margin-left: 0px;
+}
+    
+.plus-sign {
+    position: absolute;
+    top: 50%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+    margin-top: -1px;
+    font-size: 17px;
+}
+
+#navbarHeader, .usuario {
+    margin-right: 20px;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    z-index: 999;
+}
+
+.listadoProductos, .altoCompleto {
+    min-height: calc(100vh - 213px);
+}
+
+.header-submenu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#cart {
+    margin-right: 20px;
+}
+
+#cart li {
+    font-size: 22px;
+    position: relative;
+}
+
+#cart li:hover {
+    color: #3CB371;
+}
+
+#cart li .cartItems {
+    display: none;
+    background: #ffa43a;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+#login {
+    margin-top: 300px;
+    min-height: calc(100vh - 430px);
+}
+.login:hover {
+    background: #101010;
+    color: white;
+    font-weight: bold;
+    
+}
+.logout:hover {
+    background: #101010;
+    color: white;
+    font-weight: bold;
+}
+
+.brand{
+    font-weight: bold;
+    color: #005500;
+    font-size: 25px;
+    font-family: verdana;
+}
+    

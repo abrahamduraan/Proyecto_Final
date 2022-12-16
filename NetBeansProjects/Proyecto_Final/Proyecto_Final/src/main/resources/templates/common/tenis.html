@@ -1,0 +1,25 @@
+<section id="main-header" class="py-0 text-white background-white" th:fragment="mainHeader">
+    <nav class="navbar navbar-expand-sm p-2">
+        <div class="container-fluid">                 
+            <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item px-2">
+                        <a class="nav-menu-link nav-link" th:href="@{/tennis/jordan}"
+                           th:text="#{plantilla.jordan}">Jordan</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-menu-link nav-link" th:href="@{/tennis/nike}"
+                           th:text="#{plantilla.nike}">Nike</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-menu-link nav-link" th:href="@{/tennis/adidas}"
+                           th:text="#{plantilla.adidas}">Adidas</a>
+                    </li><li class="nav-item px-2">
+                        <a class="nav-menu-link nav-link" th:href="@{/tennis/newBalance}"
+                           th:text="#{plantilla.newBalance}">New Balance</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</section>

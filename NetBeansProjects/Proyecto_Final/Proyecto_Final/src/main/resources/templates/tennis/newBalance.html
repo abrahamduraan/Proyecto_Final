@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>StockShoes</title>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <section id="main-header" class="py-0 text-white" th:replace="common/tenis::mainHeader"></section>
+        <div class="container listadoProductos">
+                        <h2 th:text="#{index.titulo}" class="text-muted py-4"></h2>            
+                        <div class="row" th:if="${articulos != null and !articulos.empty}">
+                            <div class="col col-3 mb-4" th:each="articulo : ${articulos}" th:if= "${articulo.idCategoria == 4}">
+                                <div class="product-card border px-2 py-2">
+                                    <img th:src="@{${'/img/' + articulo.idArticulo + '.jpg'}}" class="card-img-top" alt="equipo">
+                                        <div class="card-body">
+                                            <h5 class="card-title">[[${articulo.descripcion}]]</h5>
+                                            <h6 class="card-text">[[${articulo.detalle}]]</h6>   
+                                            <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(articulo.precio)}]]</h6>
+                                            <button class="agregarCarrito btn-dark btn" th:replace="common/addToCartButton::addToCartButton"></button>
+                                        </div>
+                                </div>
+                            </div>                
+                        </div>
+                        <div th:if="${articulos == null or articulos.empty}"  th:text="#{articulo.no_mostrar}">
+                            No tenemos lista de articulos que mostrar...
+                        </div>
+                    </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function(event) {
+                        var carrito = localStorage.getItem("Carrito");
+                        var agregar = document.getElementsByClassName("agregarCarrito");
+                        if (carrito === null) {
+                        carrito = [];
+                        }
+                        for (i = 0; i < agregar.length; i++) {
+                        agregar[i].addEventListener('click', function (event) {
+                        console.log(carrito);
+                        var target = event.target;
+                        var parent = target.parentElement;
+                        var children = parent.children;
+                        var datosArticulo = [];
+                        let articuloNombre = children[0].innerHTML;
+                        let articuloDetalle = children[1].innerHTML;
+                        let articuloPrecio = children[2].innerHTML.replace('&nbps;', ' ');
+                        if (carrito !== []) {
+                        let encontrado = false;
+                        for (i = 0; i < carrito.length; i++) {
+                        var acumulador = parseInt(carrito[i].cantidad);
+                        if (articuloNombre == carrito[i].nombre) {
+                        carrito[i] = acumulador + 1;
+                        encontrado = true;
+                        }
+                        }
+                        if (!encontrado) {
+                        datosArticulo = asignarDatos(articuloNombre, articuloDetalle, articuloPrecio, 1);
+                        carrito.push(datosArticulo);
+                        }
+                        } else [
+                                datosArticulo = asignarDatos(articuloNombre, articuloDetalle, articuloPrecio, 1);
+                        carrito.push(datosArticulo);
+                        ]
+
+                                if (typeof (Storage) !== "undefined") {
+                        localStorage.setItem("Carrito", carrito);
+                        }
+                        });
+                        }
+                        });
+                        asignarDatos (articuloNombre, articuloDetalle, articuloPrecio, cantidad) => {
+                        datosArticulo = {
+                        'nombre': articuloNombre,
+                                'detalle': articuloDetalle,
+                                'precio': articuloPrecio,
+                                'cantidad': cantidad
+                        };
+                        return datosArticulo;
+                        }
+                    </script>
+                    <footer th:replace="layout/plantilla :: footer"/>
+                    </body>
+                    </html>
